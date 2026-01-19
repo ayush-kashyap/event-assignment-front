@@ -4,7 +4,6 @@ import { useDispatch, useSelector } from "react-redux"
 import { setEvents } from "../redux/slices/ticketSlice.js"
 import axios from "axios"
 import { useEffect, useState } from "react"
-import {  useNavigate } from "react-router-dom"
 
 export const AppBase=()=>{
     const events= useSelector((state)=>state.event.events);
@@ -12,6 +11,7 @@ export const AppBase=()=>{
     const dispatch=useDispatch();
     useEffect(()=>{
         getEvents();
+        //eslint-disable-next-line
     },[]);
 
     const getEvents=()=>{
@@ -68,7 +68,7 @@ return(
                         <div><span style={{fontWeight:"bold"}}>Available Seats :</span> {event?.seatsAvailable || "0"}</div>
                             <Flex justify="space-between">
                             <em>{event?.date || "--"}</em>
-                            <Button  disabled={event?.seatsAvailable==0} type="primary" onClick={
+                            <Button  disabled={event?.seatsAvailable===0} type="primary" onClick={
                                 ()=>{
                                     bookTicket(event?._id)
                                 }
