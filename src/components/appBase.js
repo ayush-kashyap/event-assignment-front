@@ -16,7 +16,7 @@ export const AppBase=()=>{
 
     const getEvents=()=>{
         setDataLoading(true);
-        axios.get("http://0.0.0.0:1234/api/event/events").then((res)=>{
+        axios.get("http://event-assignment-backend.vercel.app/api/event/events").then((res)=>{
             dispatch(setEvents(res.data));
             setDataLoading(false);
         }).catch((err)=>{
@@ -26,7 +26,7 @@ export const AppBase=()=>{
     }
     const bookTicket=(id)=>{
         setDataLoading(true);
-        axios.post(`http://0.0.0.0:1234/api/ticket/book/${id}`).then((res)=>{
+        axios.post(`http://event-assignment-backend.vercel.app/api/ticket/book/${id}`).then((res)=>{
             message.success(res.data);
             getEvents();
             setDataLoading(false);
